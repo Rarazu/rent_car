@@ -70,8 +70,8 @@
                             <!-- bagian data pelanggan -->
                             <div class="col-lg-8 col-md-10">
                                 <h5>Nama pelanggan: <?php echo $pelanggan["nama_pelanggan"];?></h5>
-                                <h6>Kontak: <?php echo $pelanggan["alamat_pelanggan"];?></h6>
-                                <h6>Alamat: <?php echo $pelanggan["kontak"];?></h6>
+                                <h6>Alamat: <?php echo $pelanggan["alamat_pelanggan"];?></h6>
+                                <h6>Kontak: <?php echo $pelanggan["kontak"];?></h6>
                                 <h6>ID pelanggan: <?php echo $pelanggan["id_pelanggan"];?></h6>
                             </div>
 
@@ -83,8 +83,8 @@
                                 </button>
                             </a>
                                 <div class="card-footer">
-                                    <a href="delete.php?id_pelanggan=<?=$pelanggan["id_pelanggan"]?>"
-                                    onClick="return confirm('Apakah Anda Yakin?')">
+                                    <a href="process-pelanggan.php?id_pelanggan=<?=$pelanggan["id_pelanggan"]?>"
+                                    onclick="return confirm('Are you sure?')">
                                 </div>
                                 <button class="btn btn-block btn-danger">
                                     Hapus

@@ -40,48 +40,46 @@
             <div class="card-body">
                 <?php
                 if(isset($_GET["id_pelanggan"])){
-                    // memeriksa ketika load file ini,
-                    // apakah membawa data GET dengan nama id_pelanggan
-                    // jika ture, maka form pelanggan digunakan untuk edit
+                  // jika true, maka form pelanggan digunakan utk edit
 
-                    # mengakses data pelanggan dari id_pelanggan yg dikirim
-                    include "connection.php";
-                    $id_pelanggan = $_GET["id_pelanggan"];
-                    $sql = "select * from pelanggan where id_pelanggan='$id_pelanggan'";
-                    // eksekusiperintah SQL
-                    $hasil = mysqli_query($connect, $sql);
-                    # konversi hasil query ke bentuk array
-                    $pelanggan = mysqli_fetch_array($hasil);
-                    ?>
-                    <form action="process-pelanggan.php" method="post">
-                    ID pelanggan
-                    <input type="text" name="id_pelanggan" 
-                    class="form-control mb-2" required
-                    value="<?=$pelanggan["id_pelanggan"];?>" readonly />
+                # mengakses data pelanggan dari id_pelanggan yg dikirim
+                include "connection.php";
+                $id_pelanggan = $_GET["id_pelanggan"];
+                $sql = "select * from pelanggan where id_pelanggan='$id_pelanggan'";
+                # eksekusi perintah SQL
+                $hasil = mysqli_query($connect, $sql);
+                # konversi ke bentuk array
+                $pelanggan = mysqli_fetch_array($hasil);
+                ?>
 
-                    Nama pelanggan
-                    <input type="text" name="nama_pelanggan" 
-                    class="form-control mb-2" required
-                    value="<?=$pelanggan["nama_pelanggan"];?>" />
+                <form action="process-pelanggan.php" method="post"
+                onsubmit ="return confirm('Apakah anda yakin ingin mengubah data ini?')">
+                ID pelanggan
+                <input type="text" name="id_pelanggan"
+                class="form-control mb-2" required
+                value="<?=$pelanggan["id_pelanggan"];?>" readonly/>
 
-                    Alamat pelanggan
-                    <input type="text" name="alamat_pelanggan" 
-                    class="form-control mb-2" required
-                    value="<?=$pelanggan["alamat_pelanggan"];?>" />
+                Name
+                <input type="text" name="nama_pelanggan"
+                class="form-control mb-2" required
+                value="<?=$pelanggan["nama_pelanggan"];?>"/>
 
-                    Kontak
-                    <input type="text" name="kontak" 
-                    class="form-control mb-2" required
-                    value="<?=$pelanggan["kontak"];?>" />
+                Alamat
+                <input type="text" name="alamat_pelanggan"
+                class="form-control mb-2" required
+                value="<?=$pelanggan["alamat_pelanggan"];?>"/>
 
-                  
+                Kontak
+                <input type="text" name="kontak"
+                class="form-control mb-2" required
+                value="<?=$pelanggan["kontak"];?>"/>
 
-                    <button type="submit" class="btn btn-success btn-block"
-                    name="edit_pelanggan">
-                        Simpan
-                    </button>
-                    </form>
-                    <?php
+                <button type="submit" class="btn btn-success btn-block"
+                name="edit_pelanggan">
+                    Simpan
+                </button>
+            </form>
+                <?php
                 }else{
                     // jika false, maka form pelanggan digunakan untuk insert
                     ?>
@@ -95,7 +93,7 @@
                     class="form-control mb-2" required />
 
                     Alamat pelanggan
-                    <input type="text" name="alamat" 
+                    <input type="text" name="alamat_pelanggan" 
                     class="form-control mb-2" required />
 
                     Kontak

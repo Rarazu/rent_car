@@ -37,31 +37,32 @@
                     }
                     # eksekusi SQL
                     $hasil = mysqli_query($connect, $sql);
-                    while ($buku = mysqli_fetch_array($hasil)) {
+                    while ($mobil = mysqli_fetch_array($hasil)) {
                         ?>
                         <li class="list-group-item">
                             <div class="row">
                                 <div class="col-lg-4">
                                     <!-- untuk gambar -->
-                                    <img src="cover/<?=$buku["cover"]?>" 
-                                    width="200" />
+                                    <img src="gambar/<?=$mobil["image"]?>" width="300">
                                 </div>
                                 <div class="col-lg-6">
-                                    <!-- untuk deskripsi buku -->
-                                    <h5><?=$buku["judul_buku"]?></h5>
-                                    <h6>Penulis : <?=$buku["penulis"]?></h6>
-                                    <h6>Penerbit : <?=$buku["penerbit"]?></h6>
-                                    <h6>Jumlah Halaman : <?=$buku["jumlah_halaman"]?></h6>
-                                    <h6>Genre : <?=$buku["genre"]?></h6>
+                                    <!-- untuk deskripsi mobil -->
+                                    <h5><?=$mobil["merk"]?></h5>
+                                    <h6>ID Mobil : <?=$mobil["id_mobil"]?></h6>
+                                    <h6>Nomor Mobil : <?=$mobil["nomor_mobil"]?></h6>
+                                    <h6>Jenis : <?=$mobil["jenis"]?></h6>
+                                    <h6>Warna : <?=$mobil["warna"]?></h6>
+                                    <h6>Tahun Pembuatan : <?=$mobil["tahun_pembuatan"]?></h6>
+                                    <h6>Biaya Sewa : <?=$mobil["biaya_sewa_per_hari"]?></h6>
                                 </div>
                                 <div class="col-lg-2">
-                                    <a href="form-buku.php?isbn=<?=$buku["isbn"]?>">
+                                    <a href="form-mobil.php?id_mobil=<?=$mobil["id_mobil"]?>">
                                         <button class="btn btn-info btn-block">
                                          Edit
                                          </button>
                                     </a>
 
-                                    <a href="process-buku.php?isbn=<?=$buku["isbn"]?>"
+                                    <a href="process-mobil.php?id_mobil=<?=$mobil["id_mobil"]?>"
                                     onclick="return confirm('Are you sure?')">
                                         <button class="btn btn-danger btn-block">
                                           Hapus
@@ -75,6 +76,15 @@
                     ?>
                 </ul>
             </div>
+
+            <div class="card-footer">
+                <a href="form-mobil.php"> 
+                    <button class="btn btn-success">
+                        Tambah Data Mobil
+                    </button>
+                </a>
+            </div>
+
         </div>
     </div>
 </body>
