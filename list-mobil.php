@@ -1,3 +1,10 @@
+<?php
+session_start();
+# jika saat load halaman ini, pastikan telah login sbg karyawan
+if (!isset($_SESSION["karyawan"])) {
+    header("location:login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,12 +69,15 @@
                                          </button>
                                     </a>
 
-                                    <a href="process-mobil.php?id_mobil=<?=$mobil["id_mobil"]?>"
-                                    onclick="return confirm('Are you sure?')">
+                                    <div class="card-footer">
+                                      <a href="process-mobil.php?id_mobil=<?=$mobil["id_mobil"]?>"
+                                         onclick="return confirm('Are you sure?')">
+                                    </div>
                                         <button class="btn btn-danger btn-block">
                                           Hapus
                                         </button>
-                                    </a>
+                                      </a>
+                                    
                                 </div>
                             </div>
                         </li>
