@@ -6,12 +6,12 @@ $tgl_sewa = $_POST["tgl_sewa"];
 $id_pelanggan = $_POST["id_pelanggan"];
 $id_karyawan = $_POST["id_karyawan"];
 $total_bayar = $_POST["total_bayar"];
-$mobil = $_POST["id_mobil"]; //array
+$id_mobil = $_POST["id_mobil"]; //array
 
 # perintah SQL untuk insert ke tabel pinjam
 $sql = "insert into sewa values
 ('$id_sewa','$tgl_sewa',
-'$id_pelanggan','$id_karyawan')";
+'$id_pelanggan','$id_karyawan', '$total_bayar', '$id_mobil')";
 
 if (mysqli_query($connect, $sql)) {
     # jika berhasil insert ke tabel pinjam
