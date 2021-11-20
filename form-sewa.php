@@ -15,6 +15,32 @@ if (!isset($_SESSION["karyawan"])) {
     <title>Form Sewa</title>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="list-mobil.php">Rent</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+    </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="list-pelanggan.php">Pelanggan <span class="sr-only">(current)</span></a>
+      </li>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="list-karyawan.php">Karyawan <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="list-sewa.php"> Daftar Sewa <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="form-sewa.php"> Sewa <span class="sr-only">(current)</span></a>
+      </li>
+      
+    </ul>
+  </div>
+</nav>
 <div class="container">
         <div class="card">
             <div class="card-header bg-dark">
@@ -25,6 +51,9 @@ if (!isset($_SESSION["karyawan"])) {
 
             <div class="card-body">
                 <form action="process-sewa.php" method="post">
+                    <!-- input kode sewa -->
+                    ID Sewa
+                      <input type="text" name="id_sewa" class="form-control mb-2" required>
                     <!-- tgl_pinjam dibuat otomatis -->
                     <?php
                      date_default_timezone_set('Asia/Jakarta');
@@ -72,14 +101,20 @@ if (!isset($_SESSION["karyawan"])) {
                         ?>
                         <option value="<?=($mobil["id_mobil"])?>">
                            <?=($mobil["jenis"])?>
+                           <?=($mobil["merk"])?>
+                           <?=($mobil["biaya_sewa_per_hari"] .  " /hari")?>
                         </option>
                         <?php
                     }
                     ?>
                 </select>
 
+                Menyewa Selama....Hari
+                <input type="number" name="jumlah_hari" 
+                class="form-control mb-2" >
+               
                 <button type="submit "class="btn btn-block btn-dark">
-                    Pinjam
+                    Sewa
                 </button>
                 </form>
             </div>
